@@ -8,29 +8,23 @@ let ovecka = {
     foto: 'obrazky/ovce.jpg'
 }; 
 
-let husa = {jmeno:'husa', foto: 'obrazky/husa.jpg'}
-let kocka = {jmeno: 'kocka', foto: 'obrazky/kocka.jpg'}
-let kun = {jmeno:'kun', foto: 'obrazky/kun.jpg'}
-let ovce = {jmeno:'ovce', foto: 'obrazky/ovce.jpg'}
-let pes = {jmeno: 'pes', foto: 'obrazky/pes.jpg' }
+let poleZvirat = [
+    {jmeno:'husa', foto: 'obrazky/husa.jpg'},
+    {jmeno: 'kocka', foto: 'obrazky/kocka.jpg'},
+    {jmeno:'kun', foto: 'obrazky/kun.jpg'},
+    {jmeno:'ovce', foto: 'obrazky/ovce.jpg'},
+    {jmeno: 'pes', foto: 'obrazky/pes.jpg' },
+    {jmeno: 'krava', foto: 'obrazky/krava.jpg'}
+]
 
-let poleZvirat = [];
+console.log(poleZvirat)
 
-poleZvirat.push('husa', 'kocka', 'krava', 'kun', 'ovce', 'pes')
-
-
-console.log(poleZvirat);
-console.log(husa)
 
 // Vytvor obrazek zviratka krava s fotkou a popiskem.
 
 // 1. Zacneme vytvorenim obalujiciho div element s tridou 'zvire'.
 let zvire = document.createElement('div');
     //zvire.className = 'zvire';    
-
-    
-
-
 
 // 2. Nyni vytvor dva elementy pro obrazek a jmeno zvirete, ktere budou uvnitr naseho obalujiciho div elementu zvire.
     //2.1. Vytvor img element s tridou 'foto'. Jako src obrazku pridej hodnotu objektu krava.
@@ -80,5 +74,23 @@ for (let i = 0; i < poleZvirat.length; i++) {
     zvire.appendChild(jmenoZvirete);
     
     farma.appendChild(zvire);
-
 }
+
+poleZvirat.forEach(zviratko => {
+    const zvire = document.createElement('div');
+    zvire.classList.add('zvire');
+
+    const fotoZvirete = document.createElement('img');
+    fotoZvirete.classList.add('foto');
+    fotoZvirete.src = zviratko.foto;
+    fotoZvirete.alt = zviratko.jmeno;
+
+    const jmenoZvirete = document.createElement('span');
+    jmenoZvirete.classList.add('jmeno');
+    jmenoZvirete.innerHTML = zviratko.jmeno;
+
+    zvire.appendChild(fotoZvirete);
+    zvire.appendChild(jmenoZvirete);
+
+    farma.appendChild(zvire);
+});
